@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qiyao Peng &middot; UC Santa Barbara</title>
+<meta name="description" content="Qiyao Peng — Ph.D. Candidate in Communication at UC Santa Barbara. Research on health communication, persuasion, and computational methods." />
+<meta name="author" content="Qiyao Peng" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Qiyao Peng" />
+<meta property="og:description" content="Ph.D. Candidate in Communication, UC Santa Barbara." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ Reset & Base ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fbfaf6;
+    --bg-soft: #f5f3ec;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-muted: #6f6f6f;
+    --rule: #e2ddd0;
+    --accent: #6b1f1f;        /* deep burgundy */
+    --accent-soft: #a14a4a;
+    --highlight: #f3eadb;
+    --max: 1080px;
+    --gutter: clamp(1.25rem, 4vw, 2.5rem);
+    --radius: 4px;
+    --shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 30px -16px rgba(20,20,20,.12);
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    font-size: 16.5px;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--accent); text-decoration: none; transition: color .2s ease, border-color .2s ease; border-bottom: 1px solid transparent; }
+  a:hover { color: var(--accent-soft); border-bottom-color: currentColor; }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ============ Decorative texture ============ */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(107,31,31,.04) 0, transparent 35%),
+      radial-gradient(circle at 88% 92%, rgba(20,40,60,.04) 0, transparent 40%);
+    z-index: 0;
+  }
+
+  /* ============ Nav ============ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    background: rgba(251, 250, 246, 0.78);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--ink);
+    border-bottom: 0;
+  }
+  .brand:hover { color: var(--accent); border-bottom: 0; }
+  .brand .dot { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    font-size: .87rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 0;
+    padding: .25rem 0;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ============ Layout ============ */
+  main { position: relative; z-index: 1; }
+  section { max-width: var(--max); margin: 0 auto; padding: clamp(3rem, 7vw, 5.5rem) var(--gutter); }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .73rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    margin-bottom: 1.1rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.15; color: var(--ink); }
+  h2 { font-size: clamp(2rem, 3.7vw, 2.7rem); letter-spacing: -.01em; margin-bottom: 2rem; }
+  h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: .5rem; }
+
+  p { margin-bottom: 1rem; color: var(--ink-soft); }
+
+  /* ============ Hero ============ */
+  .hero {
+    padding-top: clamp(3.5rem, 7vw, 5.5rem);
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(180px, 240px) 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; text-align: left; }
+  }
+
+  .avatar {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 240px;
+    border-radius: 50%;
+    background:
+      linear-gradient(135deg, var(--highlight) 0%, #e8dcc4 100%);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .avatar::after {
+    content: "Qiyao";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-style: italic;
+    color: var(--accent);
+    opacity: .35;
+  }
+  /* When user replaces with real photo, use <img class="avatar"> instead */
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -.015em;
+    margin-bottom: .35rem;
+  }
+  .hero h1 .ch { font-style: italic; color: var(--accent); font-weight: 500; display: inline-block; margin-left: .15em; font-size: .82em; }
+  .hero .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+  }
+  .hero .affil {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .hero .affil .org { color: var(--ink); font-weight: 500; }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .contact-row .ct {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .9rem;
+    color: var(--ink-soft);
+    border-bottom: 0;
+  }
+  .contact-row .ct:hover { color: var(--accent); }
+  .contact-row svg { width: 16px; height: 16px; flex: none; }
+
+  /* ============ Section divider ============ */
+  .divider {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ============ About ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-prose p { font-size: 1.02rem; color: var(--ink-soft); }
+  .about-prose p strong { color: var(--ink); font-weight: 600; }
+  .about-prose p em { color: var(--accent); font-style: italic; }
+  .about-prose p + p { margin-top: 1rem; }
+
+  /* ============ Research focus cards ============ */
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .focus {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.4rem;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .focus:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--accent-soft); }
+  .focus .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .78rem;
+    color: var(--accent);
+    letter-spacing: .15em;
+    display: block;
+    margin-bottom: .6rem;
+  }
+  .focus h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; margin-bottom: .6rem; font-weight: 600; line-height: 1.2; }
+  .focus p { font-size: .95rem; color: var(--ink-soft); margin: 0; }
+
+  /* ============ Publications ============ */
+  .pub-tabs { margin-bottom: 1rem; }
+  .pub-list { list-style: none; }
+  .pub {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.25rem;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--rule);
+    transition: background .25s ease;
+  }
+  .pub:hover { background: linear-gradient(to right, var(--highlight), transparent 60%); }
+  .pub:last-child { border-bottom: 1px solid var(--rule); }
+  .pub .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    color: var(--accent);
+    padding-top: .2rem;
+  }
+  .pub .tag .yr {
+    display: block;
+    font-size: 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: 0;
+    margin-bottom: .15rem;
+  }
+  .pub .body { font-size: .98rem; line-height: 1.7; color: var(--ink-soft); }
+  .pub .body .me { color: var(--ink); font-weight: 600; }
+  .pub .body .ttl { color: var(--ink); font-weight: 500; }
+  .pub .body .venue { font-style: italic; color: var(--ink); }
+  .pub .body .status {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    padding: .1rem .55rem;
+    border-radius: 3px;
+    color: var(--accent);
+    margin-left: .35rem;
+    vertical-align: middle;
+    letter-spacing: .04em;
+  }
+  .pub .body .links { margin-top: .4rem; font-size: .82rem; }
+  .pub .body .links a { margin-right: .85rem; font-family: 'JetBrains Mono', monospace; font-size: .78rem; letter-spacing: .04em; }
+
+  @media (max-width: 600px) {
+    .pub { grid-template-columns: 1fr; gap: .4rem; }
+    .pub .tag { display: flex; align-items: baseline; gap: .5rem; }
+    .pub .tag .yr { font-size: 1.1rem; display: inline; }
+  }
+
+  /* ============ Two-column lists (teaching/talks) ============ */
+  .timeline { list-style: none; }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .timeline li:last-child { border-bottom: 1px solid var(--rule); }
+  .timeline .when {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .82rem;
+    color: var(--accent);
+    letter-spacing: .04em;
+    padding-top: .1rem;
+  }
+  .timeline .what { color: var(--ink-soft); font-size: .97rem; }
+  .timeline .what .role { display: block; color: var(--ink); font-weight: 600; margin-bottom: .15rem; }
+  .timeline .what .sub { color: var(--ink-muted); font-size: .87rem; font-style: italic; }
+
+  @media (max-width: 600px) {
+    .timeline li { grid-template-columns: 1fr; gap: .25rem; }
+  }
+
+  /* ============ Inline grouped lists ============ */
+  .subsection-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 2.5rem;
+    margin-bottom: .85rem;
+    font-style: italic;
+  }
+  .subsection-title:first-of-type { margin-top: 0; }
+
+  /* ============ CV section ============ */
+  .cv-block {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  @media (max-width: 600px) { .cv-block { grid-template-columns: 1fr; text-align: left; } }
+  .cv-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
+  .cv-block p { margin-bottom: 0; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    background: var(--accent);
+    color: #fff !important;
+    padding: .75rem 1.35rem;
+    border-radius: var(--radius);
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: .03em;
+    border-bottom: 0 !important;
+    transition: background .2s ease, transform .2s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #4d1414; transform: translateY(-1px); border-bottom: 0; }
+
+  /* ============ Awards / Skills tags ============ */
+  .award-list { list-style: none; }
+  .award-list li {
+    padding: .85rem 0;
+    border-top: 1px dashed var(--rule);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.25rem;
+    color: var(--ink-soft);
+    font-size: .95rem;
+  }
+  .award-list li:first-child { border-top: 0; padding-top: 0; }
+  .award-list .yr { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--accent); }
+
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .75rem; }
+  .tag-pill {
+    display: inline-block;
+    padding: .35rem .8rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 99px;
+    font-size: .82rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-soft);
+    letter-spacing: .03em;
+  }
+  .tag-pill strong { color: var(--accent); font-weight: 600; }
+
+  /* ============ Footer ============ */
+  footer {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 3rem var(--gutter) 4rem;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    font-size: .85rem;
+    color: var(--ink-muted);
+  }
+  @media (max-width: 600px) { footer { grid-template-columns: 1fr; text-align: left; } }
+  footer .signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+  .social-row { display: flex; gap: .9rem; }
+  .social-row a {
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    color: var(--ink-soft);
+    transition: all .2s ease;
+  }
+  .social-row a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--highlight);
+    transform: translateY(-2px);
+  }
+  .social-row svg { width: 16px; height: 16px; }
+
+  /* ============ Subtle fade-in ============ */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .rise { animation: rise .7s ease both; }
+  .rise.d1 { animation-delay: .08s; }
+  .rise.d2 { animation-delay: .16s; }
+  .rise.d3 { animation-delay: .24s; }
+  .rise.d4 { animation-delay: .32s; }
+
+  /* ============ "Show more" toggles ============ */
+  details.more {
+    margin-top: 1rem;
+  }
+  details.more > summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: .6rem 0;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s ease;
+  }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary:hover { border-bottom-color: var(--accent); }
+  details.more > summary::after { content: "↓"; transition: transform .2s ease; display: inline-block; }
+  details.more[open] > summary::after { transform: rotate(180deg); }
+
+</style>
+</head>
+<body>
+
+<!-- ============ Top Nav ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Qiyao Peng<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="avatar rise" aria-label="Photo placeholder"></div>
+      <div>
+        <div class="eyebrow rise d1">Ph.D. Candidate &middot; UC Santa Barbara</div>
+        <h1 class="rise d1">Qiyao Peng<span class="ch">彭岂垚</span></h1>
+        <p class="title rise d2">Health communication &middot; Persuasion &middot; Computational methods</p>
+        <p class="affil rise d2">
+          <span class="org">Department of Communication</span><br />
+          University of California, Santa Barbara<br />
+          Advised by Dr. Jiaying Liu, Dr. Robin Nabi, &amp; Dr. Yingdan Lu
+        </p>
+        <div class="contact-row rise d3">
+          <a class="ct" href="mailto:qiyaopeng@ucsb.edu" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            qiyaopeng@ucsb.edu
+          </a>
+          <a class="ct" href="https://scholar.google.com/" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 8.5 12 15l8.5-5.52V15h2V8.5L12 2z"/><circle cx="12" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+            Google Scholar
+          </a>
+          <a class="ct" href="https://www.linkedin.com/in/qiyao-peng-64777a13b/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8h4.56v14H.22V8zM8.34 8h4.37v1.91h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.48 3.05 5.48 7.01V22h-4.56v-6.62c0-1.58-.03-3.62-2.2-3.62-2.2 0-2.54 1.72-2.54 3.5V22H8.34V8z"/></svg>
+            LinkedIn
+          </a>
+          <a class="ct" href="https://x.com/kiyaoqp" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </a>
+          <a class="ct" href="https://bsky.app/profile/qiyaopeng.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.335 5.144c2.726 2.046 5.658 6.194 6.73 8.42 1.072-2.226 4.004-6.374 6.73-8.42C21.762 3.6 24 4.918 24 7.694c0 .555-.317 4.652-.503 5.317-.647 2.314-3.007 2.903-5.107 2.546 3.671.625 4.605 2.696 2.589 4.767-3.83 3.934-5.503-.987-5.932-2.249-.079-.232-.115-.34-.115-.249 0-.092-.037.017-.115.249-.43 1.262-2.102 6.183-5.933 2.249-2.015-2.071-1.082-4.142 2.59-4.767-2.1.357-4.46-.232-5.108-2.546C5.183 12.346 4.866 8.249 4.866 7.694c0-2.776 2.238-4.094 1.469-2.55z"/></svg>
+            Bluesky
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><hr /></div>
+
+  <!-- ============ About ============ -->
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>A note on <em>my work</em></h2>
+      </div>
+      <div class="about-prose">
+        <p>
+          Welcome. I'm <strong>Qiyao Peng</strong>, a Ph.D. candidate in the
+          <strong>STEM-designated Communication program</strong> at the
+          University of California, Santa Barbara, expected to graduate in <strong>June 2027</strong>.
+        </p>
+        <p>
+          My research sits at the intersection of <em>health communication</em>, <em>persuasion</em>,
+          and <em>computational social science</em>. Using experimental, computational, and
+          neurophysiological methods (fMRI, eye-tracking), I study how messages — from
+          public-service announcements to AI-generated content — shape attitudes, beliefs,
+          and behaviors related to health and well-being.
+        </p>
+        <p>
+          I work with Dr. Jiaying Liu in the
+          <a href="https://charm.comm.ucsb.edu/" target="_blank" rel="noopener">CHARM Lab</a>
+          at UCSB, the
+          <a href="https://sites.google.com/view/cmmclab" target="_blank" rel="noopener">Computational Multimodal Communication Lab</a>
+          with Prof. Cuihua Shen, Dr. Yilang Peng, and Dr. Yingdan Lu, and the
+          <a href="https://www.comaplab.org" target="_blank" rel="noopener">COMAP Lab</a>
+          at Northwestern University. Before academia, I led brand and marketing for a Beijing-based
+          financial-IT firm and earned my M.A. from USC Annenberg.
+        </p>
+        <p>
+          When I'm not running studies, I'm probably learning a new language
+          (currently five at varying degrees of rust), watching films, or writing
+          about media and emotion.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><hr /></div>
+
+  <!-- ============ Research ============ -->
+  <section id="research">
+    <div class="eyebrow">Research</div>
+    <h2>Three threads of <em>inquiry</em></h2>
+    <p style="max-width: 720px;">
+      My work moves between message design, audience psychology, and the
+      computational tools that let us study both at scale. Three threads run through it:
+    </p>
+
+    <div class="focus-grid">
+      <div class="focus">
+        <span class="num">01 / Health</span>
+        <h3>Persuasive Health Messages</h3>
+        <p>Designing and testing anti-vaping, vaccine, and prevention messages
+        using fMRI, eye-tracking, and machine-learning analyses of message profiles.</p>
+      </div>
+      <div class="focus">
+        <span class="num">02 / AI</span>
+        <h3>Generative AI &amp; Misinformation</h3>
+        <p>The visual realism, misinformation potential, and surrealist signatures
+        of photorealistic AI-generated images across platforms.</p>
+      </div>
+      <div class="focus">
+        <span class="num">03 / Media</span>
+        <h3>News, Norms, &amp; Engagement</h3>
+        <p>How news headlines, user comments, and emotional framing shape
+        norm perceptions and engagement in digital media environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><hr /></div>
+
+  <!-- ============ Publications ============ -->
+  <section id="publications">
+    <div class="eyebrow">Publications</div>
+    <h2>Peer-reviewed <em>articles &amp; proceedings</em></h2>
+    <p style="max-width: 720px; margin-bottom: 1rem;">
+      Selected publications and work in progress. <strong style="color:var(--ink);">Bold</strong> indicates
+      shared first authorship where applicable. Click DOIs for full text.
+    </p>
+
+    <h3 class="subsection-title">Published</h3>
+    <ol class="pub-list">
+
+      <li class="pub">
+        <div class="tag">
+          <span class="yr">2026</span>
+          P.3
+        </div>
+        <div class="body">
+          Liu, X., Lu, Y., <span class="me">Peng, Q.</span>, Qian, S., Peng, Y., &amp; Shen, C.
+          <span class="ttl">Seeing the surreal: Mapping surrealism in photorealistic AI-generated images using large language models.</span>
+          <span class="venue">Computational Communication Research,</span> 8(2), 1–48.
+          <div class="links">
+            <a href="https://doi.org/10.5117/CCR2026.2.6.LIU" target="_blank" rel="noopener">DOI ↗</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag">
+          <span class="yr">2025</span>
+          P.2
+        </div>
+        <div class="body">
+          <span class="me">Peng, Q.</span>, Lu, Y., Peng, Y., Qian, S., Liu, X., &amp; Shen, C.
+          <span class="ttl">Crafting synthetic realities: Examining visual realism and misinformation potential of photorealistic AI-generated images.</span>
+          <span class="venue">CHI Extended Abstracts (CHI EA '25),</span> 1–12. ACM.
+          <div class="links">
+            <a href="https://doi.org/10.1145/3706599.3719834" target="_blank" rel="noopener">DOI ↗</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag">
+          <span class="yr">2020</span>
+          P.1
+        </div>
+        <div class="body">
+          Hong, J., <span class="me">Peng, Q.</span>, &amp; Williams, D.
+          <span class="ttl">Are you ready for artificial Mozart and Skrillex? An experiment testing expectancy violation theory and AI music.</span>
+          <span class="venue">New Media &amp; Society,</span> 23(7), 1920–1935.
+          <div class="links">
+            <a href="https://doi.org/10.1177/1461444820925798" target="_blank" rel="noopener">DOI ↗</a>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <h3 class="subsection-title">Under Review &amp; In Progress</h3>
+    <ol class="pub-list">
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.7</div>
+        <div class="body">
+          Rathje, S., Asimovic, N., …, <span class="me">Peng, Q.</span>, …, &amp; Van Bavel, J. J.
+          <span class="ttl">Testing the causal impact of social media reduction around the globe.</span>
+          <span class="venue">Nature</span>
+          <span class="status">Stage 1 Registered Report Accepted</span>
+          <div class="links">
+            <a href="https://doi.org/10.31234/osf.io/ujtxa_v2" target="_blank" rel="noopener">Preprint ↗</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.6</div>
+        <div class="body">
+          Worsdale, A., …, <span class="me">Peng, Q.</span>, …, &amp; Liu, J.
+          <span class="ttl">Depressive symptoms alter the predictive value of neural responses to vaping prevention messages in young adults who vape.</span>
+          <span class="status">Submitted &middot; Nicotine &amp; Tobacco Research</span>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.5</div>
+        <div class="body">
+          <span class="me">Peng, Q.</span>, Duong, H., Shi, R., &amp; Liu, J.
+          <span class="ttl">Contradiction disrupts and reinforcement plateaus: The interplay of news and user comments on norm perceptions in the digital age.</span>
+          <span class="status">Submitted &middot; Mass Communication and Society</span>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.4</div>
+        <div class="body">
+          Ismail, I.*, <span class="me">Peng, Q.</span>*, Liu, J., &amp; Oh, V. Y.
+          <span class="ttl">Specific mixed emotional headlines drive online media engagement over and above positivity and negativity.</span>
+          <span class="status">Submitted &middot; Media Psychology</span>
+          <div class="links" style="color: var(--ink-muted);">*Equal contribution</div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.3</div>
+        <div class="body">
+          Gonzales, A. L., Wang, L. H., Kim, Y. W., &amp; <span class="me">Peng, Q.</span>
+          <span class="ttl">Meso-level theorizing the digital divide: A model of institutional capacity for digital equity.</span>
+          <span class="status">Submitted &middot; Communication Research</span>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.2</div>
+        <div class="body">
+          Liu, J., <span class="me">Peng, Q.</span>, Malik, M., Wang, Y., Norton, E., Markey, C., Ye, T., &amp; Sweet, L. H.
+          <span class="ttl">Identifying optimal cognitive, social, and emotional profiles of anti-vaping messages for young adult vapers: Insights from interpretable machine learning analysis.</span>
+          <span class="status">Manuscript ready</span>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="tag"><span class="yr">'26</span>W.1</div>
+        <div class="body">
+          <span class="me">Peng, Q.</span>, &amp; Liu, J.
+          <span class="ttl">Generative AI for scalable message tailoring: Differential persuasive effects across socioeconomic and value-based subgroups.</span>
+          <span class="status">Manuscript in preparation</span>
+        </div>
+      </li>
+    </ol>
+
+    <h3 class="subsection-title">Media Coverage</h3>
+    <ul class="timeline">
+      <li>
+        <div class="when">Apr 2026</div>
+        <div class="what">
+          <span class="role">The Washington Post</span>
+          Cha, A. E. "Social media addiction? This detox could reverse a decade of damage."
+          <span class="sub">Coverage of Rathje et al., Nature registered report.</span>
+        </div>
+      </li>
+    </ul>
+
+    <details class="more">
+      <summary>Show conference presentations (14)</summary>
+      <ul class="timeline" style="margin-top: 1rem;">
+        <li><div class="when">Jun 2026</div><div class="what"><span class="role">Ismail, I.*, Peng, Q.*, &amp; Oh, V. Y.</span>Specific mixed emotional headlines drive online media engagement. <span class="sub">76th ICA Annual Conference, Cape Town, South Africa</span></div></li>
+        <li><div class="when">Jun 2026</div><div class="what"><span class="role">Liu, J., Peng, Q., et al.</span>Identifying optimal profiles of anti-vaping messages via interpretable ML. <span class="sub">76th ICA Annual Conference, Cape Town, South Africa</span></div></li>
+        <li><div class="when">Jun 2026</div><div class="what"><span class="role">Liu, X., Lu, Y., Peng, Q., et al.</span>Seeing the surreal: Mapping surrealism in AI-generated images via LLMs. <span class="sub">76th ICA Annual Conference, Cape Town</span></div></li>
+        <li><div class="when">Jun 2026</div><div class="what"><span class="role">Ye, T., Norton, E., …, Peng, Q., et al.</span>Social influence vs. self relevance: Neural correlates in social-appeal anti-vaping messages. <span class="sub">76th ICA Annual Conference, Cape Town</span></div></li>
+        <li><div class="when">May 2026</div><div class="what"><span class="role">Peng, Q., &amp; Liu, J.</span>Generative AI for scalable message tailoring. <span class="sub">Comm Horizons, Davis, USA</span></div></li>
+        <li><div class="when">May 2026</div><div class="what"><span class="role">Liu, X., Lu, Y., Peng, Q., et al.</span>Seeing the surreal — AI-generated images via LLMs. <span class="sub">Comm Horizons, Davis, USA</span></div></li>
+        <li><div class="when">Mar 2026</div><div class="what"><span class="role">Liu, J., Peng, Q., et al.</span>Optimal profiles of anti-vaping messages via interpretable ML. <span class="sub">Annual Meeting of SRNT, Baltimore</span></div></li>
+        <li><div class="when">Feb 2026</div><div class="what"><span class="role">Norton, E., …, Peng, Q., et al.</span>Neurocognitive predictors of vaping reduction. <span class="sub">International Neuropsychological Society, Philadelphia</span></div></li>
+        <li><div class="when">Nov 2024</div><div class="what"><span class="role">Peng, Q., Duong, H., Shi, R., &amp; Liu, J.</span>Congruent and incongruent norms: News and user comments. <span class="sub">NCA (Health Communication Division), New Orleans</span></div></li>
+        <li><div class="when">Sep 2024</div><div class="what"><span class="role">Peng, Q., Lu, Y., et al.</span>Misinformation potential of AI-generated images (poster). <span class="sub">Trust and Safety Conference, Stanford University</span></div></li>
+        <li><div class="when">Jun 2024</div><div class="what"><span class="role">Peng, Q., Lu, Y., et al.</span>Misinformation potential of AI-generated images. <span class="sub">75th ICA Annual Conference, Gold Coast, Australia</span></div></li>
+        <li><div class="when">Nov 2020</div><div class="what"><span class="role">Peng, Q., Liu, M., &amp; Williams, D.</span>The moderating effect of player types: Who doesn't quit? <span class="sub">NCA (Game Studies Division), virtual</span></div></li>
+        <li><div class="when">Nov 2020</div><div class="what"><span class="role">Liu, M., Lynn, M., &amp; Peng, Q.</span>Effectiveness of VR interventions in reducing depressive symptoms: A meta-analysis. <span class="sub">NCA, virtual</span></div></li>
+        <li><div class="when">Jun 2019</div><div class="what"><span class="role">Hong, J., Peng, Q., &amp; Williams, D.</span>Artificial Mozart and Skrillex: Expectancy violation theory and AI music. <span class="sub">ICA (Communication and Technology Division), Washington, D.C.</span></div></li>
+      </ul>
+    </details>
+  </section>
+
+  <div class="divider"><hr /></div>
+
+  <!-- ============ Teaching ============ -->
+  <section id="teaching">
+    <div class="eyebrow">Teaching</div>
+    <h2>In the <em>classroom</em></h2>
+
+    <h3 class="subsection-title">Standalone Instructor &middot; UC Santa Barbara</h3>
+    <ul class="timeline">
+      <li>
+        <div class="when">2025 · Summer A</div>
+        <div class="what">
+          <span class="role">COMM 89 — Communication Theories</span>
+          Designed syllabus, lectures, in-class activities, and assessments.
+        </div>
+      </li>
+      <li>
+        <div class="when">2025 · Spring</div>
+        <div class="what">
+          <span class="role">COMM 139 — Communication and Emotion</span>
+          Designed and delivered in-person lectures.
+        </div>
+      </li>
+      <li>
+        <div class="when">2024 · Summer B</div>
+        <div class="what">
+          <span class="role">COMM 139 — Communication and Emotion</span>
+          Designed syllabus, lectures, and assessments.
+        </div>
+      </li>
+    </ul>
+
+    <h3 class="subsection-title">Teaching Assistant &middot; UC Santa Barbara</h3>
+    <ul class="timeline">
+      <li><div class="when">2026 · Summer B</div><div class="what"><span class="role">COMM 117 — Persuasion</span>Prof. Robin Nabi</div></li>
+      <li><div class="when">2026 · Spring</div><div class="what"><span class="role">COMM 187 — Data Science</span>Dr. Prateekshit Pandey</div></li>
+      <li><div class="when">2026 · Winter</div><div class="what"><span class="role">COMM 155 — Health Communication</span>Dr. Jiaying Liu</div></li>
+      <li><div class="when">2025 · Fall</div><div class="what"><span class="role">COMM 88 — Communication Research Methods</span>Dr. Amy Gonzales</div></li>
+      <li><div class="when">2025 · Summer A</div><div class="what"><span class="role">INT 93LS — Research in STEM: Decoding Bias</span>Musa Malik</div></li>
+      <li><div class="when">2025 · Winter</div><div class="what"><span class="role">COMM 148 — Risk Communication</span>Dr. Katie Elder</div></li>
+      <li><div class="when">2024 · Spring &amp; Fall</div><div class="what"><span class="role">COMM 89 — Communication Theories</span>Prof. Walid Afifi</div></li>
+      <li><div class="when">2024 · Winter</div><div class="what"><span class="role">COMM 139 — Communication and Emotion</span>Prof. Robin Nabi</div></li>
+      <li><div class="when">2023 · Fall</div><div class="what"><span class="role">COMM 137 — Global Communication</span>Prof. Michael Stohl</div></li>
+    </ul>
+
+    <h3 class="subsection-title">Invited Talks &amp; Guest Lectures</h3>
+    <ul class="timeline">
+      <li><div class="when">Apr 2026</div><div class="what"><span class="role">Understanding health message effectiveness</span><span class="sub">Health Communication Symposium, Dept. of Communication, UCSB</span></div></li>
+      <li><div class="when">Mar 2026</div><div class="what"><span class="role">Personalizing vaping prevention messages with generative AI</span><span class="sub">Tobacco Prevention Summit, Santa Barbara County</span></div></li>
+      <li><div class="when">Jan 2026</div><div class="what"><span class="role">Internet, technology &amp; health</span><span class="sub">Guest lecture, COMM 155 Health Communication, UCSB</span></div></li>
+      <li><div class="when">Apr 2025</div><div class="what"><span class="role">Digital media in times of well-being</span><span class="sub">Symposium on Digital Media &amp; Well-Being, UCSB</span></div></li>
+    </ul>
+
+    <h3 class="subsection-title">Mentorship</h3>
+    <p style="margin-top:.25rem;">
+      Supervised and trained <strong style="color:var(--ink);">10+ undergraduate RAs</strong> in the CHARM Lab on data collection, coding, and analysis,
+      including <strong style="color:var(--ink);">Calista Schmidt</strong>, recipient of the Steven H. Chaffee Undergraduate Award for Excellence in Research (2025).
+      Mentored high-school researchers <strong style="color:var(--ink);">Vera Lew</strong> (paper submitted to ICA 2026) and <strong style="color:var(--ink);">Yitong Huang</strong>.
+    </p>
+  </section>
+
+  <div class="divider"><hr /></div>
+
+  <!-- ============ CV / Awards ============ -->
+  <section id="cv">
+    <div class="eyebrow">CV</div>
+    <h2>Curriculum <em>vitae</em></h2>
+
+    <div class="cv-block">
+      <div>
+        <h3>Full CV (PDF)</h3>
+        <p>Updated May 2026. Includes complete publications, presentations, awards, and service.</p>
+      </div>
+      <a href="CV_Qiyao_Peng.pdf" target="_blank" rel="noopener" class="btn">
+        Download CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+      </a>
+    </div>
+
+    <h3 class="subsection-title">Education</h3>
+    <ul class="timeline">
+      <li>
+        <div class="when">Expected 06/2027</div>
+        <div class="what">
+          <span class="role">Ph.D. in Communication (STEM)</span>
+          University of California, Santa Barbara
+          <span class="sub">Health communication · Persuasion · Computational &amp; experimental methods</span>
+        </div>
+      </li>
+      <li>
+        <div class="when">12/2019</div>
+        <div class="what">
+          <span class="role">M.A. in Communication Management</span>
+          USC Annenberg School for Communication and Journalism
+        </div>
+      </li>
+      <li>
+        <div class="when">06/2017</div>
+        <div class="what">
+          <span class="role">B.A. (Hons), International Communications Studies with German</span>
+          The University of Nottingham Ningbo China
+          <span class="sub">Exchange year: The University of Nottingham, UK (2015–16)</span>
+        </div>
+      </li>
+    </ul>
+
+    <h3 class="subsection-title">Honors, Awards &amp; Funding</h3>
+    <ul class="award-list">
+      <li><span class="yr">2026</span><div>Social Impact Award, Department of Communication, UCSB — <em>$2,000</em></div></li>
+      <li><span class="yr">2025</span><div>Social Science Research Grant Program (SSRGP), UCSB ISBER — <em>$7,600</em></div></li>
+      <li><span class="yr">2025</span><div>Individualized Professional Skills (IPS) Grant, UCSB Graduate Division — <em>$1,200</em></div></li>
+      <li><span class="yr">2025</span><div>Graduate Research Funding, Department of Communication, UCSB — <em>$500</em></div></li>
+      <li><span class="yr">2019</span><div>CKIDS DataFest Research Funding, USC Viterbi School of Engineering — <em>$3,600</em></div></li>
+      <li><span class="yr">2017</span><div>Zhejiang Provincial Outstanding Graduates, Ministry of Education</div></li>
+      <li><span class="yr">2014–16</span><div>Best Student of the Year (Top 1, two consecutive years) &amp; President's Scholarship, University of Nottingham</div></li>
+    </ul>
+
+    <h3 class="subsection-title">Service</h3>
+    <p>
+      <strong style="color:var(--ink);">Reviewer:</strong>
+      BMC Public Health · Health Communication · Journal of Health Communication ·
+      International Journal of Communication · ICA (Health Communication &amp; Computational Methods Divisions) ·
+      National Communication Association · International Conference on Computational Social Science (IC²S²).
+    </p>
+
+    <h3 class="subsection-title">Skills</h3>
+    <div class="tag-cloud">
+      <span class="tag-pill"><strong>Programming</strong> · Python</span>
+      <span class="tag-pill"><strong>Programming</strong> · R</span>
+      <span class="tag-pill"><strong>Stats</strong> · SPSS</span>
+      <span class="tag-pill"><strong>Stats</strong> · Mplus</span>
+      <span class="tag-pill"><strong>Typeset</strong> · LaTeX</span>
+      <span class="tag-pill"><strong>Design</strong> · Photoshop / InDesign / Premiere Pro</span>
+    </div>
+    <div class="tag-cloud" style="margin-top:.6rem;">
+      <span class="tag-pill"><strong>Chinese</strong> · Native</span>
+      <span class="tag-pill"><strong>English</strong> · IELTS 8.5 / C2</span>
+      <span class="tag-pill"><strong>German</strong> · B2</span>
+      <span class="tag-pill"><strong>Korean</strong> · TOPIK 3 / B1</span>
+    </div>
+  </section>
+
+  <div class="divider"><hr /></div>
+
+  <!-- ============ Contact ============ -->
+  <section id="contact">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's <em>get in touch</em></h2>
+    <p style="max-width: 640px;">
+      I'm always happy to chat about health communication, persuasion, computational
+      methods, or potential collaborations. The fastest way to reach me is email — I
+      usually reply within a few days.
+    </p>
+    <div class="cv-block" style="margin-top: 1.5rem;">
+      <div>
+        <h3>qiyaopeng@ucsb.edu</h3>
+        <p>Department of Communication · University of California, Santa Barbara · Santa Barbara, CA 93106</p>
+      </div>
+      <a href="mailto:qiyaopeng@ucsb.edu" class="btn">
+        Send Email
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="signature">© 2026 Qiyao Peng &middot; Last updated May 2026</div>
+  <div class="social-row">
+    <a href="mailto:qiyaopeng@ucsb.edu" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
+    <a href="https://scholar.google.com/" target="_blank" rel="noopener" aria-label="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 8.5 12 15l8.5-5.52V15h2V8.5L12 2z"/><circle cx="12" cy="17" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+    <a href="https://www.linkedin.com/in/qiyao-peng-64777a13b/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8h4.56v14H.22V8zM8.34 8h4.37v1.91h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.48 3.05 5.48 7.01V22h-4.56v-6.62c0-1.58-.03-3.62-2.2-3.62-2.2 0-2.54 1.72-2.54 3.5V22H8.34V8z"/></svg></a>
+    <a href="https://x.com/kiyaoqp" target="_blank" rel="noopener" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://bsky.app/profile/qiyaopeng.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.335 5.144c2.726 2.046 5.658 6.194 6.73 8.42 1.072-2.226 4.004-6.374 6.73-8.42C21.762 3.6 24 4.918 24 7.694c0 .555-.317 4.652-.503 5.317-.647 2.314-3.007 2.903-5.107 2.546 3.671.625 4.605 2.696 2.589 4.767-3.83 3.934-5.503-.987-5.932-2.249-.079-.232-.115-.34-.115-.249 0-.092-.037.017-.115.249-.43 1.262-2.102 6.183-5.933 2.249-2.015-2.071-1.082-4.142 2.59-4.767-2.1.357-4.46-.232-5.108-2.546C5.183 12.346 4.866 8.249 4.866 7.694c0-2.776 2.238-4.094 1.469-2.55z"/></svg></a>
+  </div>
+</footer>
+
+<script>
+  // Subtle in-view reveal for sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('section').forEach(s => {
+    s.style.opacity = '0';
+    s.style.transform = 'translateY(18px)';
+    s.style.transition = 'opacity .7s ease, transform .7s ease';
+    observer.observe(s);
+  });
+  // Hero is visible on load
+  const hero = document.querySelector('.hero');
+  if (hero) { hero.style.opacity = '1'; hero.style.transform = 'none'; }
+</script>
+
+</body>
+</html>
