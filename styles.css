@@ -1,0 +1,369 @@
+/* ============================================================
+   Qiyao Peng — Academic site
+   Single stylesheet shared across all pages.
+   Design notes: Inter sans-serif throughout; neutral grayscale
+   with a single deep-navy accent; left sidebar holds bio &
+   contact; right column holds page content. No decorative
+   gradients, no card shadows, no animation.
+   ============================================================ */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #ffffff;
+  --ink: #1f2937;          /* primary text */
+  --ink-2: #4b5563;        /* secondary text */
+  --ink-3: #6b7280;        /* tertiary / meta */
+  --ink-4: #9ca3af;        /* placeholder */
+  --rule: #e5e7eb;
+  --rule-2: #f3f4f6;
+  --accent: #1d3557;       /* deep navy */
+  --accent-hover: #2c5481;
+  --max: 1140px;
+  --gutter: clamp(1.25rem, 3vw, 2.25rem);
+  --sidebar-w: 260px;
+  --content-pad-top: 3.25rem;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ---------- Base ---------- */
+html { font-size: 16px; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  font-weight: 400;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv05";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s ease, color .15s ease;
+}
+a:hover { color: var(--accent-hover); border-bottom-color: currentColor; }
+
+::selection { background: var(--accent); color: #fff; }
+
+p { margin: 0 0 .85em; }
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding-top: var(--content-pad-top);
+  padding-bottom: 5rem;
+  align-items: start;
+}
+
+/* ---------- Header / Top Nav ---------- */
+header.site {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 1.5rem;
+}
+.brand {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  border-bottom: 0;
+}
+.brand:hover { color: var(--accent); border-bottom: 0; }
+.brand .ch { color: var(--ink-3); font-weight: 400; margin-left: .25em; }
+
+nav.primary ul { list-style: none; display: flex; gap: clamp(1rem, 2.5vw, 1.75rem); }
+nav.primary a {
+  color: var(--ink-2);
+  font-size: .92rem;
+  font-weight: 500;
+  padding: .25rem 0;
+  border-bottom: 0;
+  position: relative;
+}
+nav.primary a:hover { color: var(--accent); border-bottom: 0; }
+nav.primary a.active { color: var(--ink); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -22px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ---------- Sidebar ---------- */
+aside.sidebar {
+  position: sticky;
+  top: calc(64px + 3.25rem);
+  align-self: start;
+}
+.photo {
+  width: 100%;
+  max-width: var(--sidebar-w);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  background: var(--rule-2);
+  margin-bottom: 1.25rem;
+}
+.photo.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--ink-4);
+  font-size: .85rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.bio-name {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: .15rem;
+  line-height: 1.2;
+}
+.bio-name .cn { color: var(--ink-3); font-weight: 400; margin-left: .25em; font-size: .95em; }
+.bio-role {
+  font-size: .9rem;
+  color: var(--ink-2);
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+.bio-affil {
+  font-size: .85rem;
+  color: var(--ink-3);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+.bio-affil .org { color: var(--ink-2); }
+
+.contact-list { list-style: none; font-size: .85rem; }
+.contact-list li { margin-bottom: .55rem; }
+.contact-list a {
+  color: var(--ink-2);
+  border-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+}
+.contact-list a:hover { color: var(--accent); border-bottom: 0; }
+.contact-list svg { width: 14px; height: 14px; flex: none; color: var(--ink-3); }
+.contact-list a:hover svg { color: var(--accent); }
+
+.cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  padding: .55rem .9rem;
+  background: var(--ink);
+  color: #fff !important;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  border-radius: 3px;
+  border-bottom: 0 !important;
+}
+.cv-link:hover { background: var(--accent); border-bottom: 0 !important; }
+
+/* ---------- Main content typography ---------- */
+main.content { min-width: 0; max-width: 720px; }
+
+.page-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1.75rem;
+  line-height: 1.15;
+}
+
+h2.section-title {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.page-title + h2.section-title { margin-top: 0; }
+
+h3.subsec {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.5rem 0 .5rem;
+}
+
+main.content p {
+  color: var(--ink-2);
+  font-size: .98rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+main.content p:last-child { margin-bottom: 0; }
+
+main.content ul { list-style: none; }
+
+/* ---------- Publications / list rows ---------- */
+.list { list-style: none; }
+.list > li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: .94rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.list > li:last-child { border-bottom: 1px solid var(--rule); }
+.list > li .when {
+  color: var(--ink-3);
+  font-size: .82rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+  padding-top: .15rem;
+}
+.list > li .when .yr {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: .95rem;
+  margin-bottom: .15rem;
+}
+.list > li .what .me { color: var(--ink); font-weight: 600; }
+.list > li .what .title { color: var(--ink); }
+.list > li .what .venue { color: var(--ink); font-style: italic; }
+.list > li .what .meta {
+  display: block;
+  color: var(--ink-3);
+  font-size: .82rem;
+  margin-top: .25rem;
+  font-style: italic;
+}
+.list > li .what .links { margin-top: .35rem; font-size: .82rem; }
+.list > li .what .links a {
+  margin-right: .9rem;
+  color: var(--ink-3);
+  border-bottom: 1px dotted var(--ink-4);
+}
+.list > li .what .links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.list > li .what .badge {
+  display: inline-block;
+  margin-left: .35rem;
+  padding: 0 .5rem;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(29, 53, 87, .08);
+  border-radius: 2px;
+  vertical-align: 1px;
+}
+
+@media (max-width: 600px) {
+  .list > li { grid-template-columns: 1fr; gap: .35rem; }
+  .list > li .when .yr { display: inline; margin-right: .5rem; }
+}
+
+/* ---------- Inline meta row (research interests) ---------- */
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: .75rem 0 1.5rem;
+}
+.interests span {
+  font-size: .78rem;
+  font-weight: 500;
+  padding: .2rem .65rem;
+  background: var(--rule-2);
+  color: var(--ink-2);
+  border-radius: 2px;
+  letter-spacing: .01em;
+}
+
+/* ---------- Tag pills (skills) ---------- */
+.tagrow { display: flex; flex-wrap: wrap; gap: .4rem; margin: .35rem 0 1rem; }
+.tag {
+  font-size: .82rem;
+  color: var(--ink-2);
+  padding: .2rem .6rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+.tag strong { color: var(--ink); }
+
+/* ---------- Footer ---------- */
+footer.site {
+  border-top: 1px solid var(--rule);
+  padding: 1.5rem 0 2.5rem;
+  font-size: .8rem;
+  color: var(--ink-3);
+}
+footer.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 2.25rem;
+  }
+  aside.sidebar { position: static; }
+  .photo { max-width: 160px; }
+  nav.primary a.active::after { bottom: -22px; }
+  main.content { max-width: 100%; }
+}
+
+@media (max-width: 520px) {
+  header.site .wrap { height: auto; padding-top: .9rem; padding-bottom: .9rem; flex-direction: column; align-items: flex-start; gap: .5rem; }
+  nav.primary a.active::after { display: none; }
+  .page-title { font-size: 1.6rem; }
+}
+
+/* Print-friendly */
+@media print {
+  header.site, footer.site, .cv-link { display: none; }
+  body { color: #000; }
+  a { color: #000; text-decoration: underline; }
+}
