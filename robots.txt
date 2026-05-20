@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cv-download.html
+
+Sitemap: https://qiyaopeng.com/sitemap.xml
