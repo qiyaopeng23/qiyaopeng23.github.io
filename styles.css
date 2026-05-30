@@ -362,6 +362,32 @@ footer.site .wrap {
 }
 
 /* Print-friendly */
+/* ---------- News photos ---------- */
+.news-photo {
+  display: block;
+  margin-top: .65rem;
+  max-width: min(420px, 100%);
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+
+/* ---------- Highlight badge for awards / honors ---------- */
+.list > li .what .award {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: .1rem .45rem;
+  border-radius: 3px;
+  margin-right: .4rem;
+  vertical-align: 1px;
+}
+
 @media print {
   header.site, footer.site, .cv-link { display: none; }
   body { color: #000; }
