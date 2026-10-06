@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapping the Discourse Network of Cervical Cancer Screening on Reddit: A Topic-Network Approach · Qiyao Peng</title>
+  <meta name="description" content="Qiyao Peng (2026). Network agenda setting analysis of 9,851 Reddit posts and comments on cervical cancer screening using LDA and the Analysis of Topic Model Networks (ANTMN). SocArXiv preprint." />
+
+  <!-- ===== Google Scholar (Highwire Press) metadata ===== -->
+  <meta name="citation_title" content="Mapping the Discourse Network of Cervical Cancer Screening on Reddit: A Topic-Network Approach" />
+  <meta name="citation_author" content="Peng, Qiyao" />
+  <meta name="citation_author_institution" content="University of California, Santa Barbara" />
+  <meta name="citation_publication_date" content="2026/09/16" />
+  <meta name="citation_online_date" content="2026/09/16" />
+  <meta name="citation_publisher" content="SocArXiv" />
+  <meta name="citation_technical_report_institution" content="SocArXiv" />
+  <meta name="citation_doi" content="10.31235/osf.io/e49jy_v1" />
+  <meta name="citation_language" content="en" />
+  <meta name="citation_keywords" content="network agenda setting; cervical cancer screening; Pap smear; HPV; online health communities; Reddit; topic modeling; ANTMN; computational social science" />
+  <meta name="citation_abstract_html_url" content="https://qiyaopeng.com/papers/cervical-cancer-screening-reddit.html" />
+  <meta name="citation_pdf_url" content="https://qiyaopeng.com/papers/cervical-cancer-screening-reddit.pdf" />
+
+  <!-- ===== Dublin Core (secondary indexers) ===== -->
+  <meta name="DC.title" content="Mapping the Discourse Network of Cervical Cancer Screening on Reddit: A Topic-Network Approach" />
+  <meta name="DC.creator" content="Peng, Qiyao" />
+  <meta name="DC.date" content="2026-09-16" />
+  <meta name="DC.identifier" content="doi:10.31235/osf.io/e49jy_v1" />
+  <meta name="DC.rights" content="CC BY 4.0" />
+
+  <!-- ===== Social previews ===== -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Mapping the Discourse Network of Cervical Cancer Screening on Reddit" />
+  <meta property="og:description" content="How a peer health community organizes cervical cancer screening concerns — a network agenda setting analysis of 9,851 Reddit posts and comments." />
+  <meta property="og:url" content="https://qiyaopeng.com/papers/cervical-cancer-screening-reddit.html" />
+
+  <link rel="canonical" href="https://qiyaopeng.com/papers/cervical-cancer-screening-reddit.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e9f2a2973fae4cfd93b945f8d65e329d"}'></script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Mapping the Discourse Network of Cervical Cancer Screening on Reddit: A Topic-Network Approach",
+  "author": { "@type": "Person", "name": "Qiyao Peng", "url": "https://qiyaopeng.com/",
+              "affiliation": { "@type": "CollegeOrUniversity", "name": "University of California, Santa Barbara" } },
+  "datePublished": "2026-09-16",
+  "publisher": { "@type": "Organization", "name": "SocArXiv" },
+  "identifier": "https://doi.org/10.31235/osf.io/e49jy_v1",
+  "sameAs": "https://doi.org/10.31235/osf.io/e49jy_v1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": ["network agenda setting", "cervical cancer screening", "Pap smear", "HPV", "online health communities", "Reddit", "topic modeling", "ANTMN", "computational social science"],
+  "encoding": { "@type": "MediaObject", "contentUrl": "https://qiyaopeng.com/papers/cervical-cancer-screening-reddit.pdf", "encodingFormat": "application/pdf" }
+}
+  </script>
+
+  <style>
+    .paper { max-width: 760px; }
+    .paper .kicker { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .75rem; }
+    .paper h1 { font-size: 1.7rem; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 1rem; }
+    .paper .byline { font-size: .98rem; color: var(--ink-2); margin-bottom: .35rem; }
+    .paper .byline a { font-weight: 600; }
+    .paper .pubinfo { font-size: .88rem; color: var(--ink-3); margin-bottom: 1.5rem; }
+    .paper .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2rem; }
+    .paper .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .95rem; font-size: .85rem; font-weight: 500; border-radius: 3px; border: 1px solid var(--rule); color: var(--ink) !important; border-bottom: 1px solid var(--rule) !important; }
+    .paper .btn.primary { background: var(--ink); color: #fff !important; border-color: var(--ink) !important; }
+    .paper .btn:hover { border-color: var(--accent) !important; }
+    .paper .btn.primary:hover { background: var(--accent); }
+    .paper h2 { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 2rem 0 .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--rule); }
+    .paper .abstract { font-size: 1rem; line-height: 1.75; color: var(--ink-2); }
+    .paper .cite { font-size: .88rem; line-height: 1.6; color: var(--ink-2); background: var(--rule-2); padding: .9rem 1rem; border-radius: 3px; }
+    .paper pre.bibtex { font-family: var(--mono); font-size: .78rem; line-height: 1.55; background: var(--rule-2); padding: .9rem 1rem; border-radius: 3px; overflow-x: auto; color: var(--ink-2); white-space: pre; }
+    .paper .meta-row { font-size: .88rem; color: var(--ink-2); margin-bottom: .35rem; }
+    .paper .meta-row strong { color: var(--ink); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Qiyao Peng<span class="ch">彭琪瑶</span></a>
+    <nav class="primary">
+      <ul>
+        <li><a href="../index.html">About</a></li>
+        <li><a href="../research.html" class="active">Research</a></li>
+        <li><a href="../teaching.html">Teaching &amp; Mentorship</a></li>
+        <li><a href="../news.html">News</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <main class="content paper" style="padding-top: var(--content-pad-top); padding-bottom: 5rem; margin: 0 auto;">
+
+    <div class="kicker">Preprint · SocArXiv · 2026</div>
+
+    <h1>Mapping the Discourse Network of Cervical Cancer Screening on Reddit: A Topic-Network Approach</h1>
+
+    <div class="byline"><a href="../index.html">Qiyao Peng</a></div>
+    <div class="pubinfo">University of California, Santa Barbara &nbsp;·&nbsp; Posted September 16, 2026 &nbsp;·&nbsp; doi:10.31235/osf.io/e49jy_v1</div>
+
+    <div class="actions">
+      <a class="btn primary" href="cervical-cancer-screening-reddit.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
+        Download PDF
+      </a>
+      <a class="btn" href="https://doi.org/10.31235/osf.io/e49jy_v1" target="_blank" rel="noopener">SocArXiv (DOI)</a>
+      <a class="btn" href="../research.html">All research</a>
+    </div>
+
+    <h2>Abstract</h2>
+    <p class="abstract">
+      Online health communities are a primary venue where the public interprets cervical cancer screening,
+      yet how peer discourse, which has no editorial authority, bundles screening concerns remains unclear.
+      Drawing on network agenda setting (NAS), this study treats a peer community as a collective
+      agenda-setter and asks how it organizes screening topics. This paper analyzes 9,851 posts and comments
+      from seven women's-health subreddits (August 2025 to January 2026) using Latent Dirichlet Allocation and
+      the Analysis of Topic Model Networks, with Spearman topic-loading similarity filtered to a significant
+      backbone. Thirteen topics form three communities: a diagnostic-information agenda, an embodied
+      exam-experience agenda, and a narrative-and-support agenda. Embodied, temporally anchored concerns hold
+      them together: timing and bleeding, pelvic pain, and access carry the highest betweenness. Sentiment
+      follows network position, with support positive and cancer risk negative. These findings extend NAS to
+      agenda-less, peer-driven settings and map how health agendas emerge from the bottom up.
+    </p>
+
+    <h2>Details</h2>
+    <div class="meta-row"><strong>Keywords:</strong> network agenda setting · cervical cancer screening · Pap smear · HPV · online health communities · Reddit · topic modeling · ANTMN · computational social science</div>
+    <div class="meta-row"><strong>Subjects:</strong> Health Communication · Communication Technology and New Media</div>
+    <div class="meta-row"><strong>License:</strong> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></div>
+
+    <h2>Cite</h2>
+    <p class="cite">
+      Peng, Q. (2026). <em>Mapping the discourse network of cervical cancer screening on Reddit: A topic-network approach</em>. SocArXiv. https://doi.org/10.31235/osf.io/e49jy_v1
+    </p>
+    <pre class="bibtex">@misc{peng2026cervical,
+  author    = {Peng, Qiyao},
+  title     = {Mapping the Discourse Network of Cervical Cancer Screening on Reddit: A Topic-Network Approach},
+  year      = {2026},
+  publisher = {SocArXiv},
+  doi       = {10.31235/osf.io/e49jy_v1},
+  url       = {https://doi.org/10.31235/osf.io/e49jy_v1}
+}</pre>
+
+  </main>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Qiyao Peng &middot; Last updated October 2026</div>
+    <div>
+      <a href="mailto:qiyaopeng@ucsb.edu">Email</a> &nbsp;·&nbsp;
+      <a href="https://scholar.google.com/citations?user=vk-2gXcAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a> &nbsp;·&nbsp;
+      <a href="../cv-download.html" target="_blank" rel="noopener">CV</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
