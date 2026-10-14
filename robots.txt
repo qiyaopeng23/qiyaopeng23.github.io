@@ -1,3 +1,46 @@
+# robots.txt for qiyaopeng.com
+#
+# Policy: normal search engines (Google, Google Scholar, Bing, etc.) and
+# AI *search* agents that cite and link back to this site are welcome.
+# Crawlers that collect content to TRAIN AI models are not.
+
+# ---------- AI training crawlers: blocked ----------
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+# ---------- Everyone else (incl. Googlebot, Google Scholar, Bingbot,
+# OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User,
+# PerplexityBot, Perplexity-User) ----------
 User-agent: *
 Allow: /
 Disallow: /cv-download.html
